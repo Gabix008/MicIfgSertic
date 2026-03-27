@@ -23,13 +23,14 @@ app.get("/usuario", async (req, res) => {
 
 app.post("/disciplinas", (req, res) => {
 
-    const { nome ,professorMatricula} = req.body
+    const { nome ,matricula, professorMatricula} = req.body
 
     const dataDisciplinas = ler()
 
     const disciplina = {
         id: Date.now(),
         nome,
+        matricula,
         professorMatricula
     }
 

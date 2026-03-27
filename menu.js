@@ -13,6 +13,8 @@ function menu() {
     console.log("2 - Cadastrar Disciplina")
     console.log("3 - Listar Usuarios")
     console.log("4 - Listar Disciplinas")
+    console.log("5 - Cadastrar Matricula")
+    console.log("6 - Listar Matriculas")
     console.log("0 - Sair")
 
     rl.question("Escolha uma opção: ", async (opcao) => {
@@ -33,6 +35,14 @@ function menu() {
 
             case "4":
                 listarDisciplinas()
+                break
+
+            case "5":
+                cadastrarMatricula()
+                break
+
+            case "6":
+                listarMatricula()
                 break
 
             case "0":
@@ -84,20 +94,23 @@ async function cadastrarDisciplina() {
     })
 
     rl.question("Nome da disciplina: ", (nome) => {
+        rl.question("Matricula: ", (matricula) => {
 
-        rl.question("Matricula do Professor: ", async (professorMatricula) => {
+            rl.question("Matricula do Professor: ", async (professorMatricula) => {
 
-            await axios.post("http://localhost:3001/disciplinas", {
-                nome,
-                professorMatricula
+                await axios.post("http://localhost:3001/disciplinas", {
+                    nome,
+                    matricula,
+                    professorMatricula
+                })
+
+                console.log("Disciplina cadastrada com sucesso")
+
+                menu()
+
             })
 
-            console.log("Disciplina cadastrada com sucesso")
-
-            menu()
-
         })
-
     })
 
 }
@@ -105,6 +118,22 @@ async function cadastrarDisciplina() {
 async function listarUsuarios() {
 
     const response = await axios.get("http://localhost:3002/usuario")
+    const usuarios = response.data
+
+    for (let usuario of usuarios) {
+
+        if (usuario.funcao == 1) {
+            funcao = "Professor"
+        } else {
+            funcao = "Aluno"
+        }
+
+        usuario.funcao = funcao
+
+
+
+    }
+
 
     console.log("\nUsuarios:")
     console.table(response.data)
@@ -127,12 +156,81 @@ async function listarDisciplinas() {
 
         disciplina.professorMatricula = professor.data
 
-        
+
 
     }
 
     console.log("\nDisciplinas:")
     console.table(disciplinas)
+
+    menu()
+
+}
+
+async function cadastrarMatricula() {
+
+    const alunos = await axios.get("http://localhost:3003/alunos")
+
+    console.log("\nAlunos disponíveis:")
+
+    alunos.data.forEach(p => {
+        console.log(`${p.matricula} - ${p.nome}`)
+    })
+
+    console.log("\nDisciplinas disponíveis:")
+    const disciplinas = await axios.get("http://localhost:3001/disciplinas")
+
+
+
+    disciplinas.data.forEach(p => {
+        console.log(`${p.matricula} - ${p.nome}`)
+    })
+
+    rl.question("\nMatricula Disciplina: ", (disciplina) => {
+
+        rl.question("Matricula do Aluno: ", async (aluno) => {
+
+            await axios.post("http://localhost:3003/matricula", {
+                aluno,
+                disciplina
+            })
+
+            console.log("Matricula cadastrada com sucesso")
+
+            menu()
+
+        })
+
+    })
+
+}
+
+async function listarMatricula() {
+
+    const response = await axios.get("http://localhost:3003/matricula")
+
+    const matriculas = response.data
+
+    for (let matricula of matriculas) {
+
+        const aluno = await axios.get(
+            `http://localhost:3003/nomeAluno/${matricula.aluno}`
+        )
+
+        matricula.aluno = aluno.data
+
+
+        const disciplina = await axios.get(
+            `http://localhost:3003/nomeDisciplina/${matricula.disciplina}`
+        )
+
+        matricula.disciplina = disciplina.data
+    }
+
+
+
+    console.log("\nMatriculas:")
+    console.table(matriculas)
 
     menu()
 
