@@ -17,26 +17,25 @@ function salvar(data) {
 app.get("/usuario", async (req, res) => {
 
     const response = await axios.get("http://localhost:3002/usuario")
-    const usuarios = response.data
-
     res.json(response.data)
 
 })
 
 app.post("/disciplinas", (req, res) => {
 
-    const { nome } = req.body
+    const { nome ,professorMatricula} = req.body
 
-    const disciplinas = ler()
+    const dataDisciplinas = ler()
 
     const disciplina = {
         id: Date.now(),
-        nome
+        nome,
+        professorMatricula
     }
 
-    disciplinas.push(disciplina)
+    dataDisciplinas.push(disciplina)
 
-    salvar(disciplina)
+    salvar(dataDisciplinas)
 
     res.json(disciplina)
 
@@ -44,8 +43,42 @@ app.post("/disciplinas", (req, res) => {
 
 app.get("/disciplinas", (req, res) => {
 
-    const disciplinas = ler()
-    res.json(disciplinas)
+    const dataDisciplinas = ler()
+    res.json(dataDisciplinas)
+
+})
+
+app.get("/professores", async (req, res) => {
+
+    const response = await axios.get("http://localhost:3002/usuario")
+
+    const professores = response.data.filter(u => u.funcao == 1)
+
+    res.json(professores)
+
+})
+
+app.get("/nomeProfessor/:matricula", async (req, res) => {
+
+    const {matricula} = req.params
+
+    const response = await axios.get("http://localhost:3002/usuario")
+
+    const professor = response.data.find(
+        u => u.matricula == matricula && u.funcao == 1
+    )
+
+    res.json(professor.nome)
+
+})
+
+app.get("/alunos", async (req, res) => {
+
+    const response = await axios.get("http://localhost:3002/usuario")
+
+    const alunos = response.data.filter(u => u.funcao == 2)
+
+    res.json(alunos)
 
 })
 

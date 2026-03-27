@@ -24,19 +24,20 @@ app.get("/disciplinas", async (req, res) => {
 
 app.post("/usuario", (req, res) => {
 
-    const { nome, funcao } = req.body
+    const { nome,matricula, funcao } = req.body
 
     const dataUsuarios = ler()
 
     const usuario = {
         id: Date.now(),
         nome,
+        matricula,
         funcao
     }
 
     dataUsuarios.push(usuario)
 
-    salvar(usuario)
+    salvar(dataUsuarios)
 
     res.json(usuario)
 
@@ -50,6 +51,6 @@ app.get("/usuario", (req, res) => {
 })
 
 app.listen(3002, () => {
-    console.log("Aluno Service rodando 3002")
+    console.log("Usuarios Service rodando 3002")
 })
 
