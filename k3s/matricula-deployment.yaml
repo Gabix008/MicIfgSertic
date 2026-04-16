@@ -15,5 +15,6 @@ spec:
       containers:
         - name: matricula
           image: matricula:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3003

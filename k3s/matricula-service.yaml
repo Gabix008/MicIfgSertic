@@ -5,7 +5,9 @@ metadata:
 spec:
   selector:
     app: matricula
+  type: NodePort
   ports:
     - port: 3003
       targetPort: 3003
-  type: ClusterIP
+      nodePort: 30083
+  

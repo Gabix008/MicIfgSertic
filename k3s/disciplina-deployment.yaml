@@ -15,5 +15,6 @@ spec:
       containers:
         - name: disciplina
           image: disciplina:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3001

@@ -15,5 +15,6 @@ spec:
       containers:
         - name: usuario
           image: usuario:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3002
