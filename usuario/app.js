@@ -1,8 +1,11 @@
 const express = require("express")
 const axios = require("axios")
+const cors = require("cors")
 
 const app = express()
+
 const fs = require("fs")
+app.use(cors())
 app.use(express.json())
 const path = "./usuario.json"
 
@@ -16,7 +19,7 @@ function salvar(data) {
 
 app.get("/disciplinas", async (req, res) => {
 
-    const response = await axios.get("http://localhost:3001/disciplinas")
+    const response = await axios.get("http://disciplina:3001/disciplinas")
 
     res.json(response.data)
 

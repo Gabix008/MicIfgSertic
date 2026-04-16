@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  disciplina:
+    build: ./disciplina
+    ports:
+      - "3001:3001"
+    container_name: disciplina_service
+
+  matricula:
+    build: ./matricula
+    ports:
+      - "3003:3003"
+    container_name: matricula_service
+
+  usuario:
+    build: ./usuario
+    ports:
+      - "3002:3002"
+    container_name: usuario_service
+
+  front:
+    build: ./Front
+    ports:
+      - "8080:8080"
+    container_name: front_service
+    depends_on:
+      - disciplina
+      - matricula
+      - usuario

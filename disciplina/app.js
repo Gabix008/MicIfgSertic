@@ -1,7 +1,9 @@
 const express = require("express")
 const fs = require("fs")
+const cors = require("cors")
 const axios = require("axios")
 const app = express()
+app.use(cors())
 app.use(express.json())
 
 const path = "./disciplina.json"
@@ -16,7 +18,7 @@ function salvar(data) {
 
 app.get("/usuario", async (req, res) => {
 
-    const response = await axios.get("http://localhost:3002/usuario")
+    const response = await axios.get("http://usuario:3002/usuario")
     res.json(response.data)
 
 })
@@ -51,7 +53,7 @@ app.get("/disciplinas", (req, res) => {
 
 app.get("/professores", async (req, res) => {
 
-    const response = await axios.get("http://localhost:3002/usuario")
+    const response = await axios.get("http://usuario:3002/usuario")
 
     const professores = response.data.filter(u => u.funcao == 1)
 
@@ -63,7 +65,7 @@ app.get("/nomeProfessor/:matricula", async (req, res) => {
 
     const {matricula} = req.params
 
-    const response = await axios.get("http://localhost:3002/usuario")
+    const response = await axios.get("http://usuario:3002/usuario")
 
     const professor = response.data.find(
         u => u.matricula == matricula && u.funcao == 1
@@ -75,7 +77,7 @@ app.get("/nomeProfessor/:matricula", async (req, res) => {
 
 app.get("/alunos", async (req, res) => {
 
-    const response = await axios.get("http://localhost:3002/usuario")
+    const response = await axios.get("http://usuario:3002/usuario")
 
     const alunos = response.data.filter(u => u.funcao == 2)
 

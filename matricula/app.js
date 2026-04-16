@@ -1,8 +1,11 @@
 const express = require("express")
 const axios = require("axios")
+const cors = require("cors")
+
 
 const app = express()
 const fs = require("fs")
+app.use(cors())
 app.use(express.json())
 const path = "./matricula.json"
 
@@ -45,7 +48,7 @@ app.get("/matricula", (req, res) => {
 
 app.get("/alunos", async (req, res) => {
 
-    const response = await axios.get("http://localhost:3002/usuario")
+    const response = await axios.get("http://usuario:3002/usuario")
 
     const alunos = response.data.filter(u => u.funcao == 2)
 
@@ -57,7 +60,7 @@ app.get("/nomeAluno/:matricula", async (req, res) => {
 
     const {matricula} = req.params
 
-    const response = await axios.get("http://localhost:3002/usuario")
+    const response = await axios.get("http://usuario:3002/usuario")
 
     const aluno = response.data.find(
         u => u.matricula == matricula && u.funcao == 2
@@ -71,7 +74,7 @@ app.get("/nomeDisciplina/:matricula", async (req, res) => {
 
     const {matricula} = req.params
 
-    const response = await axios.get("http://localhost:3001/disciplinas")
+    const response = await axios.get("http://disciplina:3001/disciplinas")
 
     const disciplina = response.data.find(
         u => u.matricula == matricula 
