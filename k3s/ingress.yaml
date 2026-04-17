@@ -8,27 +8,71 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/usuario
+
+          - path: /usuario
             pathType: Prefix
             backend:
               service:
                 name: usuario
                 port:
                   number: 3002
-          - path: /api/disciplina
+
+          - path: /disciplinas
             pathType: Prefix
             backend:
               service:
                 name: disciplina
                 port:
                   number: 3001
-          - path: /api/matricula
+
+          - path: /professores
+            pathType: Prefix
+            backend:
+              service:
+                name: disciplina
+                port:
+                  number: 3001
+
+          - path: /nomeProfessor
+            pathType: Prefix
+            backend:
+              service:
+                name: disciplina
+                port:
+                  number: 3001
+
+          - path: /alunos
             pathType: Prefix
             backend:
               service:
                 name: matricula
                 port:
                   number: 3003
+
+          - path: /matricula
+            pathType: Prefix
+            backend:
+              service:
+                name: matricula
+                port:
+                  number: 3003
+
+          - path: /nomeAluno
+            pathType: Prefix
+            backend:
+              service:
+                name: matricula
+                port:
+                  number: 3003
+
+          - path: /nomeDisciplina
+            pathType: Prefix
+            backend:
+              service:
+                name: matricula
+                port:
+                  number: 3003
+
           - path: /
             pathType: Prefix
             backend:

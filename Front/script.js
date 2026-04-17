@@ -1,6 +1,6 @@
-const API_USUARIO = "/api/usuario"
-const API_DISCIPLINA = "/api/disciplina"
-const API_MATRICULA = "/api/matricula"
+const API_USUARIO = ""
+const API_DISCIPLINA = ""
+const API_MATRICULA = ""
 
 
 function mostrarCadastrarUsuario(){
