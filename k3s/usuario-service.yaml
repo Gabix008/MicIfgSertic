@@ -5,9 +5,9 @@ metadata:
 spec:
   selector:
     app: usuario
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 3002
       targetPort: 3002
-      nodePort: 30082
+      
   

@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sistema-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/usuario
+            pathType: Prefix
+            backend:
+              service:
+                name: usuario
+                port:
+                  number: 3002
+          - path: /api/disciplina
+            pathType: Prefix
+            backend:
+              service:
+                name: disciplina
+                port:
+                  number: 3001
+          - path: /api/matricula
+            pathType: Prefix
+            backend:
+              service:
+                name: matricula
+                port:
+                  number: 3003
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front
+                port:
+                  number: 8080

@@ -1,6 +1,7 @@
-const API_USUARIO = "http://192.168.1.208:30082"
-const API_DISCIPLINA = "http://192.168.1.208:30081"
-const API_MATRICULA = "http://192.168.1.208:30083"
+const API_USUARIO = "/api/usuario"
+const API_DISCIPLINA = "/api/disciplina"
+const API_MATRICULA = "/api/matricula"
+
 
 function mostrarCadastrarUsuario(){
 
