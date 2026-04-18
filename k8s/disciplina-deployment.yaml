@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disciplina
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: disciplina
+  template:
+    metadata:
+      labels:
+        app: disciplina
+    spec:
+      containers:
+        - name: disciplina
+          image: disciplina-service
+          ports:
+            - containerPort: 3001

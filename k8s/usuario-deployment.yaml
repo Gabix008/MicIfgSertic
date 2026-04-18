@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuario
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: usuario
+  template:
+    metadata:
+      labels:
+        app: usuario
+    spec:
+      containers:
+        - name: usuario
+          image: usuario-service
+          ports:
+            - containerPort: 3002

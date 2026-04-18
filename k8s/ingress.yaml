@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sistema-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front-service
+                port:
+                  number: 8080
+
+          - path: /usuario
+            pathType: Prefix
+            backend:
+              service:
+                name: usuario-service
+                port:
+                  number: 3002
+
+          - path: /disciplina
+            pathType: Prefix
+            backend:
+              service:
+                name: disciplina-service
+                port:
+                  number: 3001
+
+          - path: /matricula
+            pathType: Prefix
+            backend:
+              service:
+                name: matricula-service
+                port:
+                  number: 3003

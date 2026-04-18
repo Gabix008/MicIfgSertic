@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matricula
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: matricula
+  template:
+    metadata:
+      labels:
+        app: matricula
+    spec:
+      containers:
+        - name: matricula
+          image: matricula-service
+          ports:
+            - containerPort: 3003
