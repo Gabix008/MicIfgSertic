@@ -5,7 +5,9 @@ metadata:
 spec:
   selector:
     app: front
+  type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
-  type: ClusterIP
+      nodePort: 30007
+   
