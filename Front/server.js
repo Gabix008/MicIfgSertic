@@ -3,6 +3,6 @@ const app = express()
 
 app.use(express.static("."))
 
-app.listen(8080, () => {
+app.listen(8080, "0.0.0.0",() => {
 console.log("Interface rodando em http://localhost:8080")
 })
