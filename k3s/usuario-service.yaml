@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: usuario
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: usuario
   ports:
     - port: 3002
       targetPort: 3002
-      nodePort: 30081

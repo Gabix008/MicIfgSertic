@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: matricula
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: matricula
   ports:
     - port: 3003
       targetPort: 3003
-      nodePort: 30083
