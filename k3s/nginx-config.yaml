@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+        server {
+            listen 80;
+
+            location / {
+                proxy_pass http://front:8080;
+            }
+
+            location /usuario {
+                proxy_pass http://usuario:3002;
+            }
+
+            location /disciplinas {
+                proxy_pass http://disciplina:3001;
+            }
+
+            location /professores {
+                proxy_pass http://disciplina:3001;
+            }
+
+            location /nomeProfessor {
+                proxy_pass http://disciplina:3001;
+            }
+
+            location /matricula {
+                proxy_pass http://matricula:3003;
+            }
+
+            location /alunos {
+                proxy_pass http://matricula:3003;
+            }
+
+            location /nomeAluno {
+                proxy_pass http://matricula:3003;
+            }
+
+            location /nomeDisciplina {
+                proxy_pass http://matricula:3003;
+            }
+        }
+    }

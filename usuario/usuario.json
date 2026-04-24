@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1774618311530,
+    "nome": "João",
+    "matricula": "1",
+    "funcao": "2"
+  },
+  {
+    "id": 1774618427228,
+    "nome": "Oscar",
+    "matricula": "2",
+    "funcao": "1"
+  },
+  {
+    "id": 1774619392277,
+    "nome": "Rogerio",
+    "matricula": "3",
+    "funcao": "1"
+  },
+  {
+    "id": 1774619408845,
+    "nome": "Paula",
+    "matricula": "4",
+    "funcao": "2"
+  },
+  {
+    "id": 1776254934889,
+    "nome": "Guilherme",
+    "matricula": "123",
+    "funcao": "1"
+  }
+]

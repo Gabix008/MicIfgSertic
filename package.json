@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "axios": "^1.13.6",
+    "concurrently": "^9.2.1",
+    "express": "^5.2.1",
+    "readline": "^1.3.0"
+  },
+  "scripts": {
+    "disciplina": "node disciplina/app.js",
+    "usuario": "node usuario/app.js",
+    "matricula": "node matricula/app.js",
+    "menu": "node menu.js",
+    "start": "concurrently \"npm run disciplina\" \"npm run usuario\" \"npm run matricula\""
+  }
+}

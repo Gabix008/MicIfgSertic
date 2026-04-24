@@ -20,5 +20,3 @@ Thumbs.db
 # Arquivos locais
 *.local
 
-# Banco / arquivos JSON (opcional)
-*.json
