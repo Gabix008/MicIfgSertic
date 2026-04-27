@@ -1,6 +1,6 @@
-const API_USUARIO = "http://localhost:8082"
-const API_DISCIPLINA = "http://localhost:8082"
-const API_MATRICULA = "http://localhost:8082"
+const API_USUARIO = "http://localhost:8080"
+const API_DISCIPLINA = "http://localhost:8080"
+const API_MATRICULA = "http://localhost:8080"
 
 
 function mostrarCadastrarUsuario(){
